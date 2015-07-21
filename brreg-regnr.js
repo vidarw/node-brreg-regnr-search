@@ -30,6 +30,7 @@ var extractLog = function(logUrl, callback){
     var text = window.$('pre').html();
     var htmlLineEndings = new RegExp('<br>', 'g');
     text = text.replace(htmlLineEndings, '\n');
+    text = text.substr(text.indexOf("foretak:") + 8);
     result = personSearch(text);
 
     if(typeof(callback) == "function") callback(result);
