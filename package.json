@@ -4,12 +4,25 @@
   "description": "Searches Brønnøysundregistrene for vechicle owner information based on Norwegian license plates.",
   "version": "1.0.0",
   "license": "MIT",
-  "author": {
-    "name": "Vidar Waagbø",
-    "email": "vidar@waagbo.com",
-    "url": "https://github.com/vidarw"
-  },
+  "author": "Vidar Waagbø <vidar@waagbo.com> (https://github.com/vidarw)",
   "dependencies": {
     "jsdom": "^3.1.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js RK77773"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vidarw/brreg-regnr.git"
+  },
+  "keywords": [
+    "brreg",
+    "privacy",
+    "scanner"
+  ],
+  "bugs": {
+    "url": "https://github.com/vidarw/brreg-regnr/issues"
+  },
+  "homepage": "https://github.com/vidarw/brreg-regnr"
 }
