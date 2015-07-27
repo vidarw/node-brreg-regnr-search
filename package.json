@@ -1,8 +1,8 @@
 {
-  "name": "brreg-regnr",
-  "main": "brreg-regnr.js",
+  "name": "brreg-regnr-search",
+  "main": "brreg-regnr-search.js",
   "description": "Searches Brønnøysundregistrene for vechicle owner information based on Norwegian license plates.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "author": "Vidar Waagbø <vidar@waagbo.com> (https://github.com/vidarw)",
   "dependencies": {
@@ -14,15 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vidarw/brreg-regnr.git"
+    "url": "https://github.com/vidarw/node-brreg-regnr-search.git"
   },
   "keywords": [
+    "brønnøysund",
+    "registreringsnummer",
+    "bil",
     "brreg",
-    "privacy",
-    "scanner"
+    "privacy"
   ],
   "bugs": {
-    "url": "https://github.com/vidarw/brreg-regnr/issues"
+    "url": "https://github.com/vidarw/node-brreg-regnr-search/issues"
   },
-  "homepage": "https://github.com/vidarw/brreg-regnr"
+  "homepage": "https://github.com/vidarw/node-brreg-regnr-search"
 }

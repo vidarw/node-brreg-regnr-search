@@ -26,7 +26,7 @@ var extractLog = function(logUrl, callback){
   var baseUrl = 'http://w2.brreg.no/motorvogn/';
   var result = [];
 
-  jsdom.env(baseUrl + logUrl, ["http://code.jquery.com/jquery.js"], function (errors, window) {
+  jsdom.env(baseUrl + logUrl, ["https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"], function (errors, window) {
     var text = window.$('pre').html();
     var htmlLineEndings = new RegExp('<br>', 'g');
     text = text.replace(htmlLineEndings, '\n');
