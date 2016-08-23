@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Vidar Waagbø <vidar@waagbo.com> (https://github.com/vidarw)",
   "dependencies": {
-    "jsdom": "^3.1.2"
+    "jsdom": "^9.4.2"
   },
   "devDependencies": {},
   "scripts": {

@@ -2,7 +2,7 @@ var http = require('http');
 var jsdom = require('jsdom');
 
 var personSearch = function(text){
-  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)', 'g');
+  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n* \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)', 'g');
   var matches = [];
 
   var currentMatch = personSearch.exec(text);
@@ -39,7 +39,7 @@ var extractLog = function(logUrl, callback){
 
 var search = function(query, callback){
   var url = 'http://w2.brreg.no/motorvogn/heftelser_motorvogn.jsp?regnr=' + query;
-  jsdom.env(url, ["http://code.jquery.com/jquery.js"], function (errors, window) {
+  jsdom.env(url, ["https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"], function (errors, window) {
     var logUrl = window.$('table tr a').attr('href');
 
     if(logUrl.indexOf('dagbokutskrift') === -1){
