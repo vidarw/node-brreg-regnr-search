@@ -2,7 +2,7 @@ var http = require('http');
 var jsdom = require('jsdom');
 
 var personSearch = function(text){
-  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n* \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)', 'g');
+  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n* \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)\n*.*\n*.*\n*.*\n*.*\n\ +NOK ([0-9.,]*)\n*.*\n\ +([a-zA-ZæøåÆØÅ\ ]+)Org.nr\ ([0-9\ ]+)', 'g');
   var matches = [];
 
   var currentMatch = personSearch.exec(text);
@@ -17,7 +17,10 @@ var personSearch = function(text){
       lastName: match[1].trim(),
       address: match[3].trim(),
       zip: match[4].trim(),
-      city: match[5].trim()
+      city: match[5].trim(),
+      amount: match[6].trim().replace('.', '').replace(',', '.'),
+      bankName: match[7].trim(),
+      bankOrgNr: match[8].replace(/ /g, '')
     }
   });
 }
