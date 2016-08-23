@@ -2,6 +2,7 @@
   "name": "brreg-regnr-search",
   "main": "brreg-regnr-search.js",
   "description": "Searches Brønnøysundregistrene for vechicle owner information based on Norwegian license plates.",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "Vidar Waagbø <vidar@waagbo.com> (https://github.com/vidarw)",
   "dependencies": {
