@@ -2,8 +2,11 @@ var http = require('http');
 var jsdom = require('jsdom');
 
 var personSearch = function(text){
-  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n* \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)\n*.*\n*.*\n*.*\n*.*\n\ +NOK ([0-9.,]*)\n*.*\n\ +([a-zA-ZæøåÆØÅ\ ]+)Org.nr\ ([0-9\ ]+)', 'g');
+  var personSearch = new RegExp('\ +([a-zA-ZæøåÆØÅ]+)([a-zA-ZæøåÆØÅ\ ]+)\n\ +([0-9a-zA-ZæøåÆØÅ\ ]*)\n* \ +([0-9][0-9][0-9][0-9])\ ([a-zA-ZæøåÆØÅ]+)', 'g');
+  var lienSearch = new RegExp('NOK ([0-9.,]*)\n*.*\n\ +([a-zA-ZæøåÆØÅ\ ]+)Org.nr\ ([0-9\ ]+)', 'g');
+
   var matches = [];
+  var liensMatches = [];
 
   var currentMatch = personSearch.exec(text);
   while (currentMatch !== null){
@@ -11,18 +14,37 @@ var personSearch = function(text){
     currentMatch = personSearch.exec(text);
   }
 
-  return matches.map(function(match){
+  var currentLienMatch = lienSearch.exec(text);
+  while (currentLienMatch !== null){
+    liensMatches.push(currentLienMatch);
+    currentLienMatch = lienSearch.exec(text);
+  }
+
+  var liens = liensMatches.map(function(match){
+    return {
+      amount: match[1].trim().replace('.', '').replace(',', '.'),
+      bankName: match[2].trim(),
+      bankOrgNr: match[3].replace(/ /g, '')
+    }
+  });
+
+
+  var persons = matches.map(function(match){
     return {
       firstName: match[2].trim(),
       lastName: match[1].trim(),
       address: match[3].trim(),
       zip: match[4].trim(),
-      city: match[5].trim(),
-      amount: match[6].trim().replace('.', '').replace(',', '.'),
-      bankName: match[7].trim(),
-      bankOrgNr: match[8].replace(/ /g, '')
+      city: match[5].trim()
     }
   });
+
+  var liens
+
+  return {
+    persons: persons,
+    liens: liens
+  };
 }
 
 var extractLog = function(logUrl, callback){
